@@ -1,0 +1,32 @@
+Конечно! Вот более простой и понятный код:
+
+▎ Импорт библиотек
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+▎ Загрузка данных
+
+data = pd.read_csv('anime.csv')
+
+
+▎ Топ-3 аниме с самым высоким рейтингом
+
+top_3 = data[['title', 'genre', 'rating']].sort_values(by='rating', ascending=False).head(3)
+for i in range(len(top_3)):
+    print(f'"{top_3.iloc[i]["title"]}" ({top_3.iloc[i]["genre"]}) - рейтинг: {top_3.iloc[i]["rating"]}')
+
+
+▎ Построение графика
+
+average_episodes = data.groupby('type')['episodes'].mean()
+average_episodes.plot(kind='bar')
+plt.title('Среднее количество эпизодов по типу аниме')
+plt.xlabel('Тип аниме')
+plt.ylabel('Среднее количество эпизодов')
+plt.savefig('задача 5/average_episodes.png')
+plt.show()
+
+
+Сохраните результаты в папке "задача 5".
